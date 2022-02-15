@@ -10,8 +10,10 @@ export default function Home() {
     useEffect(() => {
         async function Loadfilmes() {
             const response = await api.get('/r-api/?api=filmes/');
-            console.log(response.data);
+            
             setFilmes(response.data);
+
+        
         }
 
         Loadfilmes();
@@ -25,7 +27,7 @@ export default function Home() {
                         <article key={filme.id}>
                             <strong>{filme.nome}</strong>
                             <img src={filme.foto} alt={filme.nome}/>
-                            <Link to="/">acessar </Link>
+                            <Link to={`/filme/${filme.id}`}>acessar </Link>
                         </article>
 
                     )
