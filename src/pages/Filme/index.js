@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import './filme.info.css'
+import { toast } from 'react-toastify';
 
 export default function Filme() {
     const { id } = useParams();
@@ -36,12 +37,13 @@ export default function Filme() {
         const hasfilme = filmesSalvos.some((filmesSalvos) => filmesSalvos.id === Filme.id)
 
         if(hasfilme){
-            alert('Você ja possui esse filme salvo');
+            toast.error('Você ja possui esse filme salvo')
             return;
         }
         filmesSalvos.push(Filme);
         localStorage.setItem('filmes',JSON.stringify(filmesSalvos));
-        alert('filme salvo com sucesso');
+        toast.info('filme salvo com sucesso');
+        
 
     }
     
