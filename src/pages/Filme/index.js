@@ -42,7 +42,7 @@ export default function Filme() {
         }
         filmesSalvos.push(Filme);
         localStorage.setItem('filmes',JSON.stringify(filmesSalvos));
-        toast.info('filme salvo com sucesso');
+        toast.success('filme salvo com sucesso');
         
 
     }

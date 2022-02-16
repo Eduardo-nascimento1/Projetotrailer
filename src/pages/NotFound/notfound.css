@@ -1,0 +1,16 @@
+.error{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.error h1 {
+    font-size: 100px;
+}
+
+.error a{
+    text-decoration: none;
+    color: #fff;
+    background-color:#0081a7;
+    padding: 10px;
+}
