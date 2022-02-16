@@ -27,7 +27,25 @@ export default function Filme() {
         loadfilme();
     },
         [id, history])
-    if (loading) {
+    
+    function salvarFilmes(){
+        const minhaLista = localStorage.getItem('filmes');
+
+        let filmesSalvos =JSON.parse(minhaLista) || []; 
+
+        const hasfilme = filmesSalvos.some((filmesSalvos) => filmesSalvos.id === Filme.id)
+
+        if(hasfilme){
+            alert('Você ja possui esse filme salvo');
+            return;
+        }
+        filmesSalvos.push(Filme);
+        localStorage.setItem('filmes',JSON.stringify(filmesSalvos));
+        alert('filme salvo com sucesso');
+
+    }
+    
+        if (loading) {
         return (
             <div className='filme-info'>
                 <h1> carregando seu filme...</h1>
@@ -41,9 +59,9 @@ export default function Filme() {
             <img src={Filme.foto} alt={Filme.nome} />
             <h3> sinopse</h3>
             {Filme.sinopse}
-           
+
             <div className='botao'>
-                <button onClick={()=> {}}>salvar</button>
+                <button onClick={salvarFilmes}>salvar</button>
                 <button>
                     <a target="blank" href={`https://www.youtube.com/results?search_query=${Filme.nome}Filme`}>
                         filme
